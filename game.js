@@ -38,7 +38,7 @@ getNewQuestion = () => {
       localStorage.setItem("percentage_score", calculation);
       return window.location.assign("/end.html");
     } else {
-      return window.location.assign("/game.html");
+      return window.location.assign("/lost.html");
     }
   }
 

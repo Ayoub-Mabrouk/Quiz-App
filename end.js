@@ -10,8 +10,8 @@ const highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
 const MAX_HIGH_SCORES = 5
 
-finalScore.innerText = mostRecentScore
-percentageScore.innerText=`Your score is ${percentage_score}%`
+finalScore.innerText = `Your score is ${mostRecentScore}%`
+percentageScore.innerText=`Your answered ${percentage_score}% right`
 
 username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value
