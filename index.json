@@ -2,36 +2,35 @@
     "data":[
         {
             "question": "What is 2 + 2?",
-            "choice1": "2",
-            "choice2": "4",
-            "choice3": "21",
-            "choice4": "17",
-            "answer": 2
+
+            "choices":["2","4","21","17","1000"],
+            "answer": 2,
+            "points":10
         },
         {
             "question":
                 "The tallest building in the world is located in which city?",
-            "choice1": "Dubai",
-            "choice2": "New York",
-            "choice3": "Shanghai",
-            "choice4": "None of the above",
-            "answer": 1
+            "choices":["Dubai","New York","Shanghai","None of the above"],
+            "answer": 1,
+            "points":20
         },
         {
             "question": "What percent of American adults believe that chocolate milk comes from brown cows?",
-            "choice1": "20%",
-            "choice2": "18%",
-            "choice3": "7%",
-            "choice4": "33%",
-            "answer": 3
+            "choices":["20%","18%","7%"],
+            "answer": 3,
+            "points":5
         },
         {
             "question": "Approximately what percent of U.S. power outages are caused by squirrels?",
-            "choice1": "10-20%",
-            "choice2": "5-10%",
-            "choice3": "15-20%",
-            "choice4": "30%-40%",
-            "answer": 1
+            "choices":["10-20%","5-10%"],
+            "answer": 1,
+            "points":2
+        },
+        {
+            "question": "which one is the best programming language?",
+            "choices":["php","Javascript"],
+            "answer": 2,
+            "points":30
         }
     ]
 }
