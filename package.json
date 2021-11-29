@@ -1,0 +1,16 @@
+{
+  "name": "QuizApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Ayoub-Mabrouk/Quiz-App.git",
+  "author": "Ayoub Mabrouk <77799760+Ayoub-Mabrouk@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "json:server": "json-server --watch db.json",
+    "dev": "vite"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}

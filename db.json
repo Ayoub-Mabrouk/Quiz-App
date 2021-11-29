@@ -1,0 +1,14 @@
+{
+  "Teachers": [{
+      "name":"wrika"
+  }],
+  "Students": [],
+  "Subjects": [
+    {
+      "text": "POO",
+      "type": "parent",
+      "children": []
+    }
+  ],
+  "Questions": []
+}
