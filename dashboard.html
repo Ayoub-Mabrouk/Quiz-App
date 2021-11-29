@@ -1,40 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="tailwind.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
-</head>
-<body>
-    <div id="container_all" class="flex ">
-        <div class="tabs_sidebar flex column">
-            <button>Teachers</button>
-            <button>Questions</button>
-            <button>Subjects</button>
-            <button>Tests</button>
-        </div>
-        <div class="tabs_content">
+    <link rel="stylesheet" href="tailwind.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="relative min-h-screen flex">
+      <!-- sidbar -->
+      <div class="bg-red-500 text-blue-100 w-64 space-y-6 py-7 px-2">
+        <!-- logo  -->
+        <a href="#" class="text-white flex items-center space-x-2 px-4">
+          <svg
+            class="w-8 h-8"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span class="text-2xl font-extrabold">Quiz-App</span>
+        </>
+        <!-- nav  -->
+        <nav>
+          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Teachers</a>
+          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Questions</a>
+          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Subjects</a>
+          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Tests</a>
+        </nav>
+      </div>
+
+      <!-- content -->
+      <div class="p-10  text-xm flex-1">
+           <div class="tabs_content  w-3/5">
+          <div class="tabs_content_holder h-auto rounded-sm	bg-gray-50	">
             <h1>Add teacher</h1>
             <div class="content">
-                <form action="">
-                    <div class="inputs">
-                        <label for="">teacher Name</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div class="inputs">
-                        <label for="">teacher email</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div class="submit">
-                        <input type="submit" value="Submit">
-                    </div>
-                </form>
+              <form action="">
+                <div class="inputs">
+                  <label for="">teacher Name</label>
+                  <input type="text" name="" id="" />
+                </div>
+                <div class="inputs">
+                  <label for="">teacher email</label>
+                  <input type="text" name="" id="" />
+                </div>
+                <div class="submit">
+                  <input type="submit" value="Submit" />
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+
     <script src="dashboard.js"></script>
-</body>
+  </body>
 </html>
