@@ -6,10 +6,8 @@
   "author": "Ayoub Mabrouk <77799760+Ayoub-Mabrouk@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "json:server": "json-server --watch db.json",
-    "dev": "vite"
+    "json:server": "json-server --watch db.json"
   },
-  "dependencies": {},
   "devDependencies": {
     "json-server": "^0.17.0"
   }
