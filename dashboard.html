@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 bg-transparent" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="tailwind.css" />
     <link
@@ -24,51 +24,160 @@
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 bg-transparent 0 bg-transparent 24 24"
             stroke="currentColor"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              d="M12 8v4l3 3m6-3a9 9 0 bg-transparent 11-18 0 bg-transparent 9 9 0 bg-transparent 0118 0z"
             />
+            
           </svg>
           <span class="text-2xl font-extrabold">Quiz-App</span>
-        </>
+        </a>
         <!-- nav  -->
         <nav>
-          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Teachers</a>
-          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Questions</a>
-          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Subjects</a>
-          <a href="" class="block py-2.5 px-4 hover:bg-red-400 rounded transition duration-200">Tests</a>
+          <a
+            href=""
+            class="
+              block
+              py-2.5
+              px-4
+              hover:bg-red-400
+              rounded
+              transition
+              duration-200
+            "
+            >Teachers</a
+          >
+          <a
+            href=""
+            class="
+              block
+              py-2.5
+              px-4
+              hover:bg-red-400
+              rounded
+              transition
+              duration-200
+            "
+            >Questions</a
+          >
+          <a
+            href=""
+            class="
+              block
+              py-2.5
+              px-4
+              hover:bg-red-400
+              rounded
+              transition
+              duration-200
+            "
+            >Subjects</a
+          >
+          <a
+            href=""
+            class="
+              block
+              py-2.5
+              px-4
+              hover:bg-red-400
+              rounded
+              transition
+              duration-200
+            "
+            >Tests</a
+          >
         </nav>
       </div>
 
       <!-- content -->
-      <div class="p-10  text-xm flex-1">
-           <div class="tabs_content  w-3/5">
-          <div class="tabs_content_holder h-auto rounded-sm	bg-gray-50	">
-            <h1>Add teacher</h1>
-            <div class="content">
-              <form action="">
-                <div class="inputs">
-                  <label for="">teacher Name</label>
-                  <input type="text" name="" id="" />
-                </div>
-                <div class="inputs">
-                  <label for="">teacher email</label>
-                  <input type="text" name="" id="" />
-                </div>
-                <div class="submit">
-                  <input type="submit" value="Submit" />
-                </div>
-              </form>
-            </div>
+      <div class="gap-y-24 bg-red-100	 w-full  text-xl flex flex-col justify-center items-center">
+        <form action="" class="md:w-1/2 w-full ">
+          <div class="shadow-xl">
+          <div class="border-b border-gray-300 flex items-center bg-red-500 rounded-t-lg">
+            <label class="text-red-100 w-24 text-right ml-4 mr-8 " for="name">First Name</label>
+            <input class="flex-1 p-4 pl-0 bg-transparent placeholder-gray-300 outline-none text-white" type="text" id="name" name="name" placeholder="your first name">
           </div>
-        </div>
+
+          <div class="border-b border-gray-300 flex items-center bg-red-500">
+            <label class=" text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Last Name</label>
+            <input class="flex-1 p-4 pl-0 bg-transparent placeholder-gray-300 outline-none text-white " type="text" id="last_name" name="last_name" placeholder="your last name">
+          </div>
+
+          <div class="border-b border-gray-300 flex items-center bg-red-500">
+            <label class=" text-red-100 w-24 text-right ml-4 mr-8" for="profession">Profession</label>
+            <input class="flex-1 p-4 pl-0 bg-transparent placeholder-gray-300 outline-none text-white" type="text" id="profession" name="profession" placeholder="your profession">
+          </div>
+
+          <div class="flex items-center bg-red-500 rounded-b-lg mb-10">
+            <label class="text-red-100 w-24 text-right ml-4 mr-8" for="email">Email</label>
+            <input class="flex-1 p-4 pl-0 bg-transparent placeholder-gray-300 outline-none text-white" type="email" id="email" name="email" placeholder="your email">
+          </div>
+          </div>
+          <div class="flex">
+          <button class="mx-auto w-full bg-red-500 p-3 rounded text-red-100 font-bold shadow hover:bg-red-700">Save</button>
+          </div>
+          <!-- <div>
+            <label for=""></label>
+            <input type="text">
+          </div> -->
+        </form>
+        <div class="w-8/12">
+        <table class=" border-collapse block md:table shadow-xl w-full">
+		<thead class="block md:table-header-group">
+			<tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+				<th class="bg-red-500 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell rounded-tl-lg">First Name</th>
+				<th class="bg-red-500 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Last Name</th>
+				<th class="bg-red-500 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Email </th>
+				<th class="bg-red-500 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Profession</th>
+				<th class="bg-red-500 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell rounded-tr-lg">Manage</th>
+			</tr>
+		</thead>
+		<tbody class="block md:table-row-group">
+			<tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Jamal Rios</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">jrios</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">jrios@icloud.com</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Math</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+					<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+				</td>
+			</tr>
+			<tr class="bg-white border border-grey-500 md:border-none block md:table-row">
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Erwin Campbell</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">ecampbell088</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">ecampbell088@hotmail.com</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><P>English</P></td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+					<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+				</td>
+			</tr>
+			<tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Lillie Clark</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">lillie</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">lillie.clark@gmail.com</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Physics</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+					<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+				</td>
+			</tr>
+			<tr class="bg-white border border-grey-500 md:border-none block md:table-row">
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">Maribel Koch</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">maribelkoch</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">mkoch@yahoo.com</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">French</td>
+				<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+					<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+				</td>
+			</tr>			
+		</tbody>
+	</table>
+  </div>
       </div>
-    </div>
 
     <script src="dashboard.js"></script>
   </body>
