@@ -52,8 +52,6 @@ getNewQuestion = () => {
   choices = currentQuestion.choices;
   choices_container.innerHTML = "";
   choices.forEach((choice, i) => {
-    // const number = choice.dataset["number"];
-    // choice.innerText = currentQuestion["choice" + number];
     var element = document.createElement("div");
     element.classList.add("choice-container");
     element.addEventListener("click", (e) => {

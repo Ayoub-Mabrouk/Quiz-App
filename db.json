@@ -1,7 +1,21 @@
 {
-  "Teachers": [{
-      "name":"wrika"
-  }],
+  "Teachers": [
+    {
+      "first_name": "karim",
+      "last_name": "azoz",
+      "profession": "math",
+      "email": "aziz@azoz.com",
+      "id": 1
+    },
+    {
+      "first_name": "galo",
+      "last_name": "fghj",
+      "profession": "d",
+      "email": "d@d",
+      "id": 2
+    }
+    
+  ],
   "Students": [],
   "Subjects": [
     {
@@ -10,5 +24,7 @@
       "children": []
     }
   ],
-  "Questions": []
+  "Questions": [],
+  "Answers": [],
+  "Levels": []
 }
