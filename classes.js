@@ -41,7 +41,7 @@ class User {
   }
   class Question {
     static static_id = 0;
-    constructor(text, answers=[], points, level) {
+    constructor({text, answers=[], points, level}) {
       this.id = `${[...this.constructor.name].shift()}${[
         ...this.constructor.name,
       ].pop()}${++Question.static_id}${Date.now()}${Math.floor(
