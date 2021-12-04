@@ -1,45 +1,38 @@
-import { User, Teacher, Student, Subject, Question, Level } from "./classes.js";
+import {
+  User,
+  Teacher,
+  Student,
+  Subject,
+  Question,
+  Level,
+  Answer,
+} from "./classes.js";
 
 
-// async function add_Teacher(data = {}) {
-//     const response = await fetch('http://localhost:3000/Teachers', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(data)
-//     });
-//     return response.json();
-//   }
-//   add_Teacher({...hassan});
 
-// let content_container = document.querySelector(".content_container");
-
-//tab links
-let teacher_link = document.querySelector("#teacher_link");
-let questions_link = document.querySelector("#questions_link");
-let subjects_link = document.querySelector("#subjects_link");
 let tests_link = document.querySelector("#tests_link");
+
 teacher_link.addEventListener("click", show_teacher_tab);
 questions_link.addEventListener("click", show_question_tab);
 answers_link.addEventListener("click", show_answer_tab);
+subjects_link.addEventListener("click", show_subject_tab);
+levels_link.addEventListener("click", show_level_tab);
 
+let Teachers = [];
 
-let Teachers=[];
- 
 async function Get_all_teachers() {
   const response = await fetch("http://localhost:3000/Teachers");
   Teachers = await response.json();
 }
 
 async function create_teachers_table() {
-  Teachers=[];
+  Teachers = [];
   await Get_all_teachers();
   //get the table container to start modifiying it
-  Teachers.map((e,i)=>
-  tbody.insertAdjacentHTML(
-    "beforeend",
-    `<tr class="
+  Teachers.map((e, i) =>
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="
     bg-gray-300
     border border-grey-500
     md:border-none
@@ -82,11 +75,12 @@ async function create_teachers_table() {
     ">
   ${e.profession}
 </td>
-</tr>`)
+</tr>`
+    )
   );
 }
 async function show_teacher_tab() {
-  content_container.innerHTML=` <form action="" id="form_add_teacher" class="md:w-1/2 w-full">
+  content_container.innerHTML = ` <form action="" id="form_add_teacher" class="md:w-1/2 w-full">
   <div class="shadow-xl">
     <div class="
           border-b border-gray-300
@@ -231,30 +225,28 @@ async function show_teacher_tab() {
       
     </tbody>
   </table>
-</div>`
+</div>`;
 
   await create_teachers_table();
   form_add_teacher.onsubmit = async (e) => {
     e.preventDefault();
     let data = Object.fromEntries(new FormData(e.target));
-    if(Object.entries(data).every((e) => e[1].length > 0)) {
+    if (Object.entries(data).every((e) => e[1].length > 0)) {
       let response = await fetch("http://localhost:3000/Teachers", {
         headers: {
           "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify(new Teacher({...data})),
+        body: JSON.stringify(new Teacher({ ...data })),
       });
       show_teacher_tab();
     } else {
       console.log("fill all the teacher's input");
     }
   };
-  
 }
+
 show_teacher_tab();
-
-
 
 //
 //
@@ -263,22 +255,22 @@ show_teacher_tab();
 //
 //
 
-let Questions=[]
+let Questions = [];
 async function get_all_questions() {
   const response = await fetch("http://localhost:3000/Questions");
   Questions = await response.json();
 }
 
 async function create_questions_table() {
-  Questions=[];
+  Questions = [];
   let levels = await Level.get_all_levels();
   let subjects = await Subject.get_all_subjects();
   await get_all_questions();
   //get the table container to start modifiying it
-  Questions.map((e,i)=>
-  tbody.insertAdjacentHTML(
-    "beforeend",
-    `<tr class="
+  Questions.map((e, i) =>
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="
     bg-gray-300
     border border-grey-500
     md:border-none
@@ -292,7 +284,7 @@ async function create_questions_table() {
       block
       md:table-cell
     ">
-  ${subjects.filter(sub=>sub.id==e.subjectID)[0].text}
+  ${subjects.filter((sub) => sub.id == e.subjectID)[0].text}
 </td>
 <td class="
       p-2
@@ -319,17 +311,19 @@ async function create_questions_table() {
       block
       md:table-cell
     ">
-    ${levels.filter(level=>level.id==e.level)[0].min_points}-${levels.filter(level=>level.id==e.level)[0].max_points}
+    ${levels.filter((level) => level.id == e.level)[0].min_points}-${
+        levels.filter((level) => level.id == e.level)[0].max_points
+      }
 </td>
-</tr>`)
+</tr>`
+    )
   );
 }
 async function show_question_tab() {
-  
   let subjects = await Subject.get_all_subjects();
   let levels = await Level.get_all_levels();
 
-  content_container.innerHTML=`<form action="" id="form_add_question" class="md:w-1/2 w-full">
+  content_container.innerHTML = `<form action="" id="form_add_question" class="md:w-1/2 w-full">
   <div class="shadow-xl">
     <div class="
           border-b border-gray-300
@@ -369,7 +363,10 @@ async function show_question_tab() {
     <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Level</label>
       <select name="level" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option value="" disabled selected>Please choose a level</option>
-        ${levels.map(e=>`<option value=${e.id}>${e.min_points}-${e.max_points}</option>`).join``}
+        ${levels.map(
+          (e) =>
+            `<option value=${e.id}>${e.min_points}-${e.max_points}</option>`
+        ).join``}
       </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -382,7 +379,18 @@ async function show_question_tab() {
     <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Subject</label>
       <select name="subjectID" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option value="" disabled selected>Please choose subject</option>
-        ${subjects.filter(e=>e.type=="parent")?.map(parent=>`<optgroup label=${parent.text}>${subjects.filter(sub=>sub.type=="" && parent.children.includes(sub.id))?.map(sub=>`<option value=${sub.id}>${sub.text}</option>`).join('')}</optgroup>`).join('')}       
+        ${subjects
+          .filter((e) => e.type == "parent")
+          ?.map(
+            (parent) =>
+              `<optgroup label=${parent.text}>${subjects
+                .filter(
+                  (sub) => sub.type == "" && parent.children.includes(sub.id)
+                )
+                ?.map((sub) => `<option value=${sub.id}>${sub.text}</option>`)
+                .join("")}</optgroup>`
+          )
+          .join("")}       
       </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -480,23 +488,23 @@ async function show_question_tab() {
       
     </tbody>
   </table>
-</div>`
-
+</div>`;
 
   await create_questions_table();
   form_add_question.onsubmit = async (e) => {
     e.preventDefault();
     let data = Object.fromEntries(new FormData(e.target));
-    let min=levels.filter(level=>level.id==data.level)[0].min_points;
-    let max=levels.filter(level=>level.id==data.level)[0].max_points;
-    if(data.points<min || data.points>max){
+    let min = levels.filter((level) => level.id == data.level)[0].min_points;
+    let max = levels.filter((level) => level.id == data.level)[0].max_points;
+    if (data.points < min || data.points > max) {
       console.log("choose points from the interval");
       return;
     }
-    let T= new Teacher({});
-    T.add_question(data)
+    let T = new Teacher({});
+    T.add_question(data);
     show_question_tab();
-  }}
+  };
+}
 
 //
 //
@@ -504,9 +512,9 @@ async function show_question_tab() {
 //
 //
 
-
 async function show_answer_tab() {
-  content_container.innerHTML=` <form action="" id="form_add_answer" class="md:w-1/2 w-full">
+  let questions = await Question.get_all_questions();
+  content_container.innerHTML = ` <form action="" id="form_add_answer" class="md:w-1/2 w-full">
   <div class="shadow-xl">
     <div class="
           border-b border-gray-300
@@ -515,7 +523,7 @@ async function show_answer_tab() {
           bg-red-500
           rounded-t-lg
         ">
-      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="name">First Name</label>
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="name">Answer</label>
       <input class="
             flex-1
             p-4
@@ -524,49 +532,41 @@ async function show_answer_tab() {
             placeholder-gray-300
             outline-none
             text-white
-          " type="text" id="name" name="first_name" placeholder="your first name" />
+          " type="text" id="name" name="text" placeholder="Answer" />
     </div>
 
-    <div class="border-b border-gray-300 flex items-center bg-red-500">
-      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Last Name</label>
-      <input class="
-            flex-1
-            p-4
-            pl-0
-            bg-transparent
-            placeholder-gray-300
-            outline-none
-            text-white
-          " type="text" id="last_name" name="last_name" placeholder="your last name" />
+   
+
+    
+
+    <div class="flex relative w-full justify-between bg-red-500 items-center">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Question</label>
+        <select name="questionId" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value="" disabled selected>Please choose the question</option>
+          ${questions
+            ?.map((q) => `<option value=${q.id}>${q.text}</option>`)
+            .join("")}   
+        </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
     </div>
 
-    <div class="border-b border-gray-300 flex items-center bg-red-500">
-      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="profession">Profession</label>
-      <input class="
-            flex-1
-            p-4
-            pl-0
-            bg-transparent
-            placeholder-gray-300
-            outline-none
-            text-white
-          " type="text" id="profession" name="profession" placeholder="your profession" />
+    <div class="flex relative w-full justify-between bg-red-500 items-center">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Status</label>
+        <select name="correct" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value="" disabled selected>Please choose the status</option>
+          <option value="true"  >True</option>
+          <option value="false"  >False</option>       
+        </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
     </div>
 
-    <div class="flex items-center bg-red-500 rounded-b-lg mb-10">
-      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="email">Email</label>
-      <input class="
-            flex-1
-            p-4
-            pl-0
-            bg-transparent
-            placeholder-gray-300
-            outline-none
-            text-white
-          " type="email" id="email" name="email" placeholder="your email" />
-    </div>
+
   </div>
-  <div class="flex">
+  <div class="flex mt-5">
     <button type="submit" class="
           mx-auto
           w-full
@@ -578,24 +578,196 @@ async function show_answer_tab() {
           shadow
           hover:bg-red-700
         ">
-      Add Teacher
+      Add Answer
     </button>
   </div>
-</form>`
+</form>`;
 
   form_add_answer.onsubmit = async (e) => {
     e.preventDefault();
     let data = Object.fromEntries(new FormData(e.target));
-    
-      let response = await fetch("http://localhost:3000/Answers", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(new Teacher({...data})),
-      });
-      show_answer_tab();
-    
+    let T = new Teacher({});
+    // console.log(data.questionId);
+    T.add_answer(data);
+    show_answer_tab();
   };
-  
+}
+
+//
+//
+//subject
+//
+//
+
+async function show_subject_tab() {
+  let subjects = await Subject.get_all_subjects();
+  content_container.innerHTML = ` <form action="" id="form_add_subject" class="md:w-1/2 w-full">
+  <div class="shadow-xl">
+    <div class="
+          border-b border-gray-300
+          flex
+          items-center
+          bg-red-500
+          rounded-t-lg
+        ">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="name">Subject</label>
+      <input class="
+            flex-1
+            p-4
+            pl-0
+            bg-transparent
+            placeholder-gray-300
+            outline-none
+            text-white
+          " type="text" id="name" name="text" placeholder="Subject Name" />
+    </div>
+
+   
+    <div id="subject_type_select" class="flex relative w-full justify-between bg-red-500 items-center">
+    <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Type</label>
+      <select name="type" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <option value="" disabled selected>Please choose the type</option>
+        <option value="parent"  >Subject</option>
+        <option value=""  >Sub Subject</option>       
+      </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+    </div>
+  </div>
+    
+
+    <div id="subject_parent_select" class="flex relative w-full justify-between bg-red-500 items-center hidden">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="last_name">Sub of</label>
+        <select name="parentid" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value="" disabled selected>Please choose the parent</option>
+          ${subjects
+            .filter((e) => e.type == "parent")
+            ?.map((s) => `<option value=${s.id}>${s.text}</option>`)
+            .join("")}   
+        </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
+    </div>
+
+    
+
+
+  </div>
+  <div class="flex mt-5">
+    <button type="submit" class="
+          mx-auto
+          w-full
+          bg-red-500
+          p-3
+          rounded
+          text-red-100
+          font-bold
+          shadow
+          hover:bg-red-700
+        ">
+      Add Subject
+    </button>
+  </div>
+</form>`;
+  subject_type_select.onchange = (e) => {
+    e.target.value == "parent"
+      ? subject_parent_select.classList.add("hidden")
+      : subject_parent_select.classList.remove("hidden");
+  };
+
+  form_add_subject.onsubmit = async (e) => {
+    e.preventDefault();
+    let data = Object.fromEntries(new FormData(e.target));
+    data.type == "parent" ? delete data.parentid : null;
+    let T = new Teacher({});
+    // console.log(data);
+    T.add_subject(data);
+    show_subject_tab();
+  };
+}
+
+//
+//
+//subject
+//
+//
+
+async function show_level_tab() {
+  content_container.innerHTML = ` <form action="" id="form_add_level" class="md:w-1/2 w-full">
+  <div class="shadow-xl">
+    <div class="
+          border-b border-gray-300
+          flex
+          items-center
+          bg-red-500
+          rounded-t-lg
+        ">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="name">Level</label>
+      <input class="
+            flex-1
+            p-4
+            pl-0
+            bg-transparent
+            placeholder-gray-300
+            outline-none
+            text-white
+          " type="text" id="name" name="name" placeholder="Name" />
+    </div>
+
+
+    <div class="border-b border-gray-300 flex items-center bg-red-500">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="profession">Minimum</label>
+      <input class="
+            flex-1
+            p-4
+            pl-0
+            bg-transparent
+            placeholder-gray-300
+            outline-none
+            text-white
+          " type="number" id="profession" name="min_points" placeholder="min points here" />
+    </div>
+
+    <div class="flex items-center bg-red-500 rounded-b-lg mb-10">
+      <label class="text-red-100 w-24 text-right ml-4 mr-8" for="email">Maximum</label>
+      <input class="
+            flex-1
+            p-4
+            pl-0
+            bg-transparent
+            placeholder-gray-300
+            outline-none
+            text-white
+          " type="number" id="email" name="max_points" placeholder="max points here" />
+    </div>
+
+
+
+  </div>
+  <div class="flex mt-5">
+    <button type="submit" class="
+          mx-auto
+          w-full
+          bg-red-500
+          p-3
+          rounded
+          text-red-100
+          font-bold
+          shadow
+          hover:bg-red-700
+        ">
+      Add level
+    </button>
+  </div>
+</form>`;
+
+  form_add_level.onsubmit = async (e) => {
+    e.preventDefault();
+    let data = Object.fromEntries(new FormData(e.target));
+    let T = new Teacher({});
+    console.log(data);
+    T.add_level(data);
+    show_level_tab();
+  };
 }

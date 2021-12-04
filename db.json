@@ -6,27 +6,6 @@
       "email": "pexo@mailinator.com",
       "id": "Tr116383814183823092",
       "profession": "Dolor laboriosam so"
-    },
-    {
-      "first_name": "Kenyon",
-      "last_name": "Larsen",
-      "email": "fywizo@mailinator.com",
-      "id": "Tr216383814269593290",
-      "profession": "Iusto quia voluptate"
-    },
-    {
-      "first_name": "Xavier",
-      "last_name": "Cox",
-      "email": "goqeroh@mailinator.com",
-      "id": "Tr316383814355475198",
-      "profession": "Cillum a qui volupta"
-    },
-    {
-      "first_name": "Charde",
-      "last_name": "Johns",
-      "email": "kafu@mailinator.com",
-      "id": "Tr116384822326485585",
-      "profession": "Corrupti tempora in"
     }
   ],
   "Students": [],
@@ -65,90 +44,55 @@
       "text": "Analyses",
       "type": "",
       "children": []
+    },
+    {
+      "id": "St116385889955938798",
+      "text": "Arabic",
+      "type": "parent",
+      "children": [
+        "St116385905632868139",
+        "St216385906146626835",
+        "St316385906721229393"
+      ]
+    },
+    {
+      "id": "St116385891366019615",
+      "text": "french",
+      "type": "parent",
+      "children": []
+    },
+    {
+      "id": "St116385892074024413",
+      "text": "okoy",
+      "type": "parent",
+      "children": []
+    },
+    {
+      "id": "St116385893444942233",
+      "text": "Flynn Le",
+      "type": "parent",
+      "children": []
+    },
+    {
+      "id": "St116385905632868139",
+      "text": "i3rab",
+      "type": "",
+      "children": []
+    },
+    {
+      "id": "St216385906146626835",
+      "text": "incha2",
+      "type": "",
+      "children": []
+    },
+    {
+      "id": "St316385906721229393",
+      "text": "Leah Thompson",
+      "type": "",
+      "children": []
     }
   ],
-  "Questions": [
-    {
-      "id": "Qn116384565142561783",
-      "text": "namosani",
-      "points": 12,
-      "answers": [],
-      "level": 1,
-      "subjectID": "4"
-    },
-    {
-      "id": "Qn116384826568176079",
-      "text": "Kasimir Robertson",
-      "points": "Raymond",
-      "answers": [],
-      "subjectID": "3",
-      "level": "1"
-    },
-    {
-      "id": "Qn11638483343475995",
-      "text": "Urielle Flynn",
-      "points": "Velazquez",
-      "answers": [],
-      "subjectID": "5",
-      "level": "2"
-    },
-    {
-      "id": "Qn11638483847620934",
-      "text": "Ivan Alston",
-      "points": "100",
-      "answers": [],
-      "subjectID": "4",
-      "level": "1"
-    },
-    {
-      "id": "Qn216384838584082061",
-      "text": "Flynn Mckinney",
-      "points": "78",
-      "answers": [],
-      "subjectID": "3",
-      "level": "2"
-    },
-    {
-      "id": "Qn116384841980272685",
-      "text": "Channing Romero",
-      "points": "40",
-      "answers": [],
-      "subjectID": "3",
-      "level": "1"
-    },
-    {
-      "id": "Qn116384844961819831",
-      "text": "Mohammad Tanner",
-      "points": "15",
-      "answers": [],
-      "subjectID": "4",
-      "level": "1"
-    },
-    {
-      "id": "Qn116384888856412260",
-      "text": "Raven Jones",
-      "points": "29",
-      "answers": [],
-      "subjectID": "4",
-      "level": "1"
-    },
-    {
-      "id": "Qn216384889194399485",
-      "text": "Illiana Moody",
-      "points": "23",
-      "answers": [],
-      "subjectID": "3",
-      "level": "1"
-    },
-    {
-      "id": "Qn116385187018449386",
-      "text": "Keely Branch",
-      "points": "20",
-      "answers": [],
-      "subjectID": "3",
-      "level": "1"
-    }
-  ],
+  "Questions": [],
   "Answers": [],
   "Levels": [
     {
@@ -161,5 +105,6 @@
       "min_points": 40,
       "max_points": 50
     }
+    
   ]
 }
